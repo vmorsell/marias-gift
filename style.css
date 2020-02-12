@@ -226,6 +226,6 @@ body {
     transform: translateY(100vh);
   }
   to {
-    transform: translateY(-300vh);
+    transform: translateY(-100vh);
   }
 }

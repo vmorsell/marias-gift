@@ -2,6 +2,9 @@ const app = () => {
   const $container = document.getElementsByTagName('body')[0];
   const $box = document.getElementsByClassName('box')[0];
 
+  const balloonsLimit = 500;
+  let balloons = 0;
+
   const balloonClasses = ['green', 'yellow', 'pink', 'red'];
 
   const random = (max, round = false) => {
@@ -24,15 +27,19 @@ const app = () => {
 
   const randomBalloonProps = () => {
     const type = balloonClasses[random(balloonClasses.length, true)];
-    const duration = random(20) + 10 + 's';
-    const marginLeft = random(100) + '%';
-    const marginTop = random(100) + '%';
+    const duration = random(20) + 5 + 's';
+    const marginLeft = random(100) + 'vw';
+    const marginTop = random(15) + 'vh';
 
     return { type, duration, marginLeft, marginTop };
   };
 
   const dispatchBalloons = n => {
     for (let i = 0; i < n; i += 1) {
+      if (balloons >= balloonsLimit) {
+        break;
+      }
+
       const $balloon = document.createElement('div');
       const props = randomBalloonProps();
 
@@ -44,6 +51,7 @@ const app = () => {
       $balloon.onclick = () => handleBalloonClick($balloon);
 
       $container.append($balloon);
+      balloons += 1;
     }
   };
 
