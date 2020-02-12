@@ -14,7 +14,6 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  user-select: none;
 }
 
 .stats {
@@ -32,6 +31,22 @@ body {
 .stats.visible {
   transition: opacity 0.3s ease-in-out;
   opacity: 1;
+}
+
+.balloon-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #000;
+  background-color: transparent;
+  z-index: 100;
+}
+
+.balloon-container.visible {
+  display: block;
 }
 
 .balloon {

@@ -1,5 +1,5 @@
 const app = () => {
-  const $container = document.getElementsByTagName('body')[0];
+  const $container = document.getElementsByClassName('balloon-container')[0];
   const $box = document.getElementsByClassName('box')[0];
   const $stats = document.getElementsByClassName('stats')[0];
   const $counter = document.getElementsByClassName('pop-counter')[0];
@@ -66,6 +66,13 @@ const app = () => {
     $level.innerHTML = levels[level].icon + ' ' + levels[level].name;
   };
 
+  const startGame = () => {
+    $container.classList.add('visible');
+    $stats.classList.add('visible');
+
+    nextLevel();
+  };
+
   const handleBalloonClick = $balloon => {
     popBalloon($balloon);
     dispatchBalloons(1);
@@ -81,8 +88,8 @@ const app = () => {
     }
 
     $box.classList.add('clicked');
-    $stats.classList.add('visible');
-    nextLevel();
+
+    startGame();
   };
 
   $box.onclick = handleBoxClick;
