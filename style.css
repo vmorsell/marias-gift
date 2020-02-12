@@ -120,12 +120,12 @@ body {
   background-color: #f9f9f9;
   font-size: 0.6rem;
   padding: 0.4em;
-  transform: rotateZ(2deg);
+  transform: rotateZ(2deg) translateZ(5vmin);
   box-shadow: 0 0.3vmin 0.7vmin 0 rgba(0, 0, 0, 0.3);
 }
 
 .box.clicked .box-content .note {
-  animation: liftNote 0.5s ease 1s 1 forwards;
+  animation: liftNote 0.5s ease 1s 1 both;
 }
 
 .box-side .label {
@@ -212,6 +212,9 @@ body {
 }
 
 @keyframes liftNote {
+  from {
+    transform: rotateZ(2deg) translateZ(5vmin);
+  }
   to {
     transform: rotateZ(-3deg) translateZ(40vmin);
   }
