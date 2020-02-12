@@ -17,6 +17,23 @@ body {
   user-select: none;
 }
 
+.stats {
+  position: absolute;
+  left: 5vmin;
+  bottom: 5vmin;
+  font-family: 'Caveat', cursive;
+  color: rgba(0, 0, 0, 0.6);
+  background-color: transparent;
+  font-size: 0.7rem;
+  z-index: 100;
+  opacity: 0;
+}
+
+.stats.visible {
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+}
+
 .balloon {
   height: 10vmin;
   width: 8vmin;

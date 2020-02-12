@@ -1,9 +1,12 @@
 const app = () => {
   const $container = document.getElementsByTagName('body')[0];
   const $box = document.getElementsByClassName('box')[0];
+  const $stats = document.getElementsByClassName('stats')[0];
+  const $counter = document.getElementsByClassName('pop-counter')[0];
 
   const balloonsLimit = 500;
   let balloons = 0;
+  let popped = 0;
 
   const balloonClasses = ['green', 'yellow', 'pink', 'red'];
 
@@ -18,11 +21,14 @@ const app = () => {
     }
 
     $box.classList.add('clicked');
+    $stats.classList.add('visible');
     dispatchBalloons(50);
   };
 
   const popBalloon = $balloon => {
     $balloon.remove();
+    popped += 1;
+    $counter.innerHTML = popped;
   };
 
   const randomBalloonProps = () => {
