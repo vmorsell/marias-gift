@@ -9,6 +9,10 @@ steps:
     inputs:
       SourceFolder: '$(build.sourcesDirectory)'
       TargetFolder: '$(build.ArtifactStagingDirectory)'
+      Contents: |
+        **/*
+        !.git/**/*
+        !azure-pipelines.yml
       CleanTargetFolder: true
 
   - task: PublishBuildArtifacts@1
