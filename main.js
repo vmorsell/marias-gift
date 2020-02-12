@@ -4,6 +4,11 @@ const app = () => {
 
   const balloonClasses = ['green', 'yellow', 'pink', 'red'];
 
+  const random = (max, round = false) => {
+    const random = Math.random() * max;
+    return round ? Math.floor(random) : random;
+  };
+
   const handleBoxClick = () => {
     if ($box.classList.contains('clicked')) {
       return;
@@ -18,11 +23,10 @@ const app = () => {
   };
 
   const randomBalloonProps = () => {
-    const type =
-      balloonClasses[Math.floor(Math.random() * balloonClasses.length)];
-    const duration = Math.random() * 20 + 10 + 's';
-    const marginLeft = Math.random() * 100 + '%';
-    const marginTop = Math.random() * 100 + '%';
+    const type = balloonClasses[random(balloonClasses.length, true)];
+    const duration = random(20) + 10 + 's';
+    const marginLeft = random(100) + '%';
+    const marginTop = random(100) + '%';
 
     return { type, duration, marginLeft, marginTop };
   };
