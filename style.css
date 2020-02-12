@@ -119,6 +119,7 @@ body {
   color: rgba(50, 50, 50, 0.8);
   background-color: #f9f9f9;
   font-size: 0.6rem;
+  text-align: center;
   padding: 0.4em;
   transform: rotateZ(2deg) translateZ(5vmin);
   box-shadow: 0 0.3vmin 0.7vmin 0 rgba(0, 0, 0, 0.3);
