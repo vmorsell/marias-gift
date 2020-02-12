@@ -3,26 +3,24 @@ const app = () => {
   const $box = document.getElementsByClassName('box')[0];
   const $stats = document.getElementsByClassName('stats')[0];
   const $counter = document.getElementsByClassName('pop-counter')[0];
+  const $level = document.getElementsByClassName('level')[0];
 
-  const balloonsLimit = 500;
-  let balloons = 0;
+  let level = -1;
   let popped = 0;
 
   const balloonClasses = ['green', 'yellow', 'pink', 'red'];
+  const levels = [
+    { icon: '🥚', name: 'Ägg', balloons: 10, popped: 0 },
+    { icon: '🐣', name: 'Nykläckt', balloons: 50, popped: 10 },
+    { icon: '🇳🇴', name: 'Norrman', balloons: 100, popped: 20 },
+    { icon: '🦏', name: 'Noshörning', balloons: 150, popped: 50 },
+    { icon: '🦄', name: 'Enhörning', balloons: 250, popped: 100 },
+    { icon: '♟', name: 'Pjäs', balloons: 1000, popped: 200 },
+  ];
 
   const random = (max, round = false) => {
     const random = Math.random() * max;
     return round ? Math.floor(random) : random;
-  };
-
-  const handleBoxClick = () => {
-    if ($box.classList.contains('clicked')) {
-      return;
-    }
-
-    $box.classList.add('clicked');
-    $stats.classList.add('visible');
-    dispatchBalloons(50);
   };
 
   const popBalloon = $balloon => {
@@ -42,10 +40,6 @@ const app = () => {
 
   const dispatchBalloons = n => {
     for (let i = 0; i < n; i += 1) {
-      if (balloons >= balloonsLimit) {
-        break;
-      }
-
       const $balloon = document.createElement('div');
       const props = randomBalloonProps();
 
@@ -57,13 +51,38 @@ const app = () => {
       $balloon.onclick = () => handleBalloonClick($balloon);
 
       $container.append($balloon);
-      balloons += 1;
     }
+  };
+
+  const nextLevel = () => {
+    level += 1;
+
+    const newBalloons =
+      level > 0
+        ? levels[level].balloons - levels[level - 1].balloons
+        : levels[0].balloons;
+
+    dispatchBalloons(newBalloons);
+    $level.innerHTML = levels[level].icon + ' ' + levels[level].name;
   };
 
   const handleBalloonClick = $balloon => {
     popBalloon($balloon);
-    dispatchBalloons(20);
+    dispatchBalloons(1);
+
+    if (popped == levels[level + 1].popped) {
+      nextLevel();
+    }
+  };
+
+  const handleBoxClick = () => {
+    if ($box.classList.contains('clicked')) {
+      return;
+    }
+
+    $box.classList.add('clicked');
+    $stats.classList.add('visible');
+    nextLevel();
   };
 
   $box.onclick = handleBoxClick;
