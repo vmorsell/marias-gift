@@ -49,7 +49,7 @@ const app = () => {
 
   const handleBalloonClick = $balloon => {
     popBalloon($balloon);
-    dispatchBalloons(1);
+    dispatchBalloons(20);
   };
 
   $box.onclick = handleBoxClick;
