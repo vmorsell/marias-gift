@@ -1,0 +1,14 @@
+trigger:
+  - master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: '$(build.sourcesDirectory)'
+      TargetFolder: '$(build.ArtifactStagingDirectory)'
+      CleanTargetFolder: true
+
+  - task: PublishBuildArtifacts@1
