@@ -11,9 +11,9 @@ const app = () => {
   const balloonClasses = ['green', 'yellow', 'pink', 'red'];
   const levels = [
     { icon: '🧷', name: 'Säkerhetsnål', balloons: 10, popped: 0 },
-    { icon: '📌', name: 'Pin', balloons: 20, popped: 10 },
+    { icon: '📌', name: 'Pin', balloons: 20, popped: 5 },
     { icon: '🦟', name: 'Mygga', balloons: 50, popped: 20 },
-    { icon: '🏹', name: 'Pilbåge', balloons: 100, popped: 50 },
+    { icon: '🏹', name: 'Bågskytt', balloons: 100, popped: 50 },
     { icon: '🦄', name: 'Enhörning', balloons: 250, popped: 100 },
     { icon: '♟', name: 'Pjäs', balloons: 1000, popped: 200 },
   ];
